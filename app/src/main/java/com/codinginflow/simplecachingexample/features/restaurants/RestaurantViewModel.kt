@@ -14,19 +14,6 @@ class RestaurantViewModel @Inject constructor(
         repository: RestaurantRepository
 ) : ViewModel() {
 
-//    private val restaurantsLiveData = MutableLiveData<List<Restaurant>>()
-//    val restaurants: LiveData<List<Restaurant>> = restaurantsLiveData
-//
-//    init {
-//        viewModelScope.launch {
-//            val restaurants = api.getRestaurants()
-//            delay(2000)
-//            restaurantsLiveData.value = restaurants
-//        }
-//    }
-
     val restaurants = repository.getRestaurants().asLiveData()
-
-
 
 }
