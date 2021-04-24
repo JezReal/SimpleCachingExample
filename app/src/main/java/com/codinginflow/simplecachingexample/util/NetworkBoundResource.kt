@@ -11,7 +11,7 @@ inline fun <ResultType, RequestType> networkBoundResource(
     val data = query().first()
 
     val flow = if (shouldFetch(data)) {
-        //maybe show a snackbar
+        // TODO: show a snackbar that data is being updated
         emit(Resource.Loading(data))
 
         try {
@@ -20,6 +20,7 @@ inline fun <ResultType, RequestType> networkBoundResource(
                 Resource.Success(it)
             }
         } catch (throwable: Throwable) {
+            //TODO: show snackbar that update failed
             query().map { Resource.Error(throwable, it) }
         }
     } else {
